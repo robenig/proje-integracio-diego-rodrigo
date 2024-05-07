@@ -2,7 +2,6 @@ import configparser
 import os
 
 
-
 def menu_configuracion(config):
     while True:
         print("\n--- Menú de Configuración ---")
@@ -23,7 +22,7 @@ def menu_configuracion(config):
             config = cargar_configuracion()
         elif opcion == '3':
             if config:
-                config = cambiar_parametro(config)
+                config = cambiar_parametros(config)
             else:
                 print("No se ha cargado ninguna configuración.")
         elif opcion == '4':
@@ -50,6 +49,7 @@ def ver_configuracion(config):
             print(f"{key}: {value}")
         print()
 
+
 def cargar_configuracion():
     archivo_config = input("Introduce el nombre del archivo de configuración: ")
     config = configparser.ConfigParser()
@@ -65,7 +65,7 @@ def cargar_configuracion():
         return None
 
 
-def cambiar_parametro(config):
+def cambiar_parametros(config):
     seccion = input("Introduce la sección del parámetro que quieres cambiar: ")
     parametro = input("Introduce el nombre del parámetro que quieres cambiar: ")
     valor_actual = config.get(seccion, parametro)
@@ -75,13 +75,6 @@ def cambiar_parametro(config):
     print("¡Valor cambiado con éxito!")
     return config
 
-def guardar_configuracion(config):
-    archivo_nuevo = input("Introduce el nombre del archivo de configuración a crear: ")
-    confirmacion = input(f"¿Estás seguro que quieres guardar la configuración en {archivo_nuevo}? (S/N): ")
-    if confirmacion.upper() == 'S':
-        with open(archivo_nuevo, 'w') as configfile:
-            config.write(configfile)
-        print("¡Configuración guardada con éxito!")
 
 def crear_configuracion():
     config = configparser.ConfigParser()
@@ -91,13 +84,14 @@ def crear_configuracion():
         valor = input(f"{parametro}: ")
         config['PARAMETROS'][parametro] = valor
     print("¡Configuración creada con éxito!")
-
+    #Guardar configuración
     archivo_nuevo = input("Introduce el nombre del archivo de configuración a crear o sobrescribir: ")
     confirmacion = input(f"¿Estás seguro que quieres guardar la configuración en {archivo_nuevo}? (S/N): ")
     if confirmacion.upper() == 'S':
         with open(archivo_nuevo, 'w') as configfile:
             config.write(configfile)
         print("¡Configuración guardada con éxito!")
+
 
 def crear_directorios(config):
     dir_dst = config.get('PARAMETROS', 'DIR_DST')
@@ -115,6 +109,7 @@ def crear_directorios(config):
                     print(f"Directorio {size_dir} creado correctamente para el usuario {user}.")
     except Exception as e:
         print(f"Error al crear directorios: {e}")
+
 
 if __name__ == "__main__":
     config = None
