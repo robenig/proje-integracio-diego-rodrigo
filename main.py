@@ -2,7 +2,8 @@ import configparser
 import os
 
 #menu
-def menu_configuracion(config):
+def menu_configuracion():
+    config = None
     while True:
         print("\n--- Menú de Configuración ---")
         print("1. Crear Nuevo Archivo de Configuración")
@@ -13,9 +14,9 @@ def menu_configuracion(config):
         print("0. Salir")
         opcion = input("Selecciona una opción: ")
         if opcion == '1':
-            crear_configuracion()
+            config = crear_configuracion()
         elif opcion == '2':
-            cargar_configuracion()
+            config = cargar_configuracion()
         elif opcion == '3':
             if config:
                 ver_configuracion(config)
@@ -23,7 +24,7 @@ def menu_configuracion(config):
                 print("No se ha cargado ninguna configuración.")
         elif opcion == '4':
             if config:
-                cambiar_parametros(config)
+                config = cambiar_parametros(config)
             else:
                 print("No se ha cargado ninguna configuración.")
         elif opcion == '5':
@@ -128,4 +129,4 @@ def crear_directorios(config):
 #ejecutar
 if __name__ == "__main__":
     config = None
-    menu_configuracion(config)
+    menu_configuracion()
