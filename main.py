@@ -125,7 +125,7 @@ def crear_directorios(config):
     except Exception as e:
         print(f"Error al crear directorios: {e}")
 
-
+#ejecutar
 if __name__ == "__main__":
     config = None
     menu_configuracion(config)
