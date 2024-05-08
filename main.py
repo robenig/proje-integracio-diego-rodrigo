@@ -35,7 +35,7 @@ def menu_configuracion():
         elif opcion == '0':
             break
         else:
-            print("Opción inválida. Por favor, selecciona una opción válida.")
+            print("Opción no válida.")
 
 
 def ver_configuracion(config):
