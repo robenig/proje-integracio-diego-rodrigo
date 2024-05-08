@@ -1,7 +1,7 @@
 import configparser
 import os
 
-
+#menu
 def menu_configuracion(config):
     while True:
         print("\n--- Menú de Configuración ---")
