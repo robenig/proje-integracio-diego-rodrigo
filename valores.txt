@@ -1,5 +1,5 @@
-DIR_INIT: rbg_init
-DST: rbg_dst
+DIR_INIT: pepe_init
+DST: pepe_dst
 MIDA PETITA: 17
 MIDA MITJANA: 20
 Extensio filtrada: bin o exe o pdf
