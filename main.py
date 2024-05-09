@@ -37,17 +37,15 @@ def menu_configuracion():
         else:
             print("Opción no válida.")
 
-
+# ver config (alternativo)
 def ver_configuracion(config):
     for section in config.sections():
-        print()
-        print(f"--- {section} ---")
-        print()
+        print("\n---", section, "---\n")
         for key, value in config.items(section):
-            print(f"{key}: {value}")
-        print()
+            print(key + ":", value)
 
 
+# cargar config
 def cargar_configuracion():
     archivo_config = input("Introduce el nombre del archivo de configuración: ")
     config = configparser.ConfigParser()
@@ -62,7 +60,7 @@ def cargar_configuracion():
         print("Error al leer el archivo de configuración:", e)
         return None
 
-
+# cambiar param config
 def cambiar_parametros(config):
     seccion = 'PARAMETROS'  # Sección fija para los parámetros
     parametros = config[seccion]  # Obtener todos los parámetros de la sección
@@ -91,7 +89,7 @@ def cambiar_parametros(config):
     return config
 
 
-
+# crear config
 def crear_configuracion():
     config = configparser.ConfigParser()
     config['PARAMETROS'] = {}
@@ -108,7 +106,7 @@ def crear_configuracion():
             config.write(configfile)
         print("¡Configuración guardada con éxito!")
 
-
+# crear directorios
 def crear_directorios(config):
     dir_dst = config.get('PARAMETROS', 'DIR_DST')
     iniciales = input("Pon tus iniciales para dar nombre a los directorios: ")
